@@ -1,10 +1,10 @@
-service: kvo-auction-service
+service: kvo-auction-service #define meta-data of service
 #app: your-app-name
 #org: your-org-name
 
-plugins:
-  - serverless-bundle
-  - serverless-pseudo-parameters
+plugins: #
+  - serverless-bundle #plugin that optimally packages your ES6 or TypeScript Node.js Lambda functions
+  - serverless-pseudo-parameters #use the CloudFormation Pseudo Parameters in your serverless.yml
 
 provider:
   name: aws
