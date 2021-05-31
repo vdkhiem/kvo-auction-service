@@ -1,0 +1,6 @@
+steps:
+  - label: ":console:"
+    command: "../devops/setup.sh"
+    parallelism: 5
+    agents:
+      queue: "${BUILDKITE_AGENT_META_DATA_QUEUE:-default}"
