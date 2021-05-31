@@ -1,0 +1,18 @@
+{
+  "name": "kvo-auction-service",
+  "version": "1.0.0",
+  "description": "kvo auction service api",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Khiem Vo",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.918.0"
+  },
+  "devDependencies": {
+    "serverless-bundle": "^4.3.1",
+    "serverless-pseudo-parameters": "^2.5.0"
+  }
+}
