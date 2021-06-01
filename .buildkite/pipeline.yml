@@ -1,8 +1,8 @@
 steps:
-  # - label: ":serverless:"
-  #   command: "npm install serverless -g"
-  # - label: ":node:"
-  #   command: "npm install"
+  - label: ":serverless:"
+    command: "npm install serverless -g"
+  - label: ":node:"
+    command: "npm install"
   - label: ":console:"
     command: "setup.sh"
     parallelism: 1
