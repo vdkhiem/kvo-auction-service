@@ -1,17 +1,17 @@
-service: kvo-auction-service #define meta-data of service
+service: kvo-auction-service # define meta-data of service
 #app: your-app-name
 #org: your-org-name
 
 plugins: #
-  - serverless-bundle #plugin that optimally packages your ES6 or TypeScript Node.js Lambda functions
-  - serverless-pseudo-parameters #use the CloudFormation Pseudo Parameters in your serverless.yml
+  - serverless-bundle # plugin that optimally packages your ES6 or TypeScript Node.js Lambda functions
+  - serverless-pseudo-parameters # use the CloudFormation Pseudo Parameters in your serverless.yml
 
 provider:
-  name: aws
-  runtime: nodejs14.x
+  name: aws # cloud provider
+  runtime: nodejs14.x # runtime programming language
   lambdaHashingVersion: 20201221
-  region: ap-southeast-2
-  stage: ${opt:stage, 'sit'}
+  region: ap-southeast-2 # default region
+  stage: ${opt:stage, 'sit'} # environment state
 
 functions:
   healthcheck:
