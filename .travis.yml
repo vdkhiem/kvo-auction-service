@@ -36,6 +36,7 @@ jobs:
       name: "Deploy Auction API"
       if: type = push AND NOT branch = master
       env:
+        - SERVICE_PATH=""
         - STAGE_NAME=sit
         - *SIT_ENV
 
@@ -44,5 +45,6 @@ jobs:
       name: "Deploy Auction API"
       if: type = push AND branch = master
       env:
+        - SERVICE_PATH=""
         - STAGE_NAME=prod
         - *PRODUCTION_ENV
