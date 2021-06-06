@@ -22,7 +22,7 @@ functions:
           path: /${self:custom.apiVersion}/healthcheck
   createAuction:
     handler: auction/createAuction.handler
-    event:
+    events:
       - http:
           method: 'POST'
           path: /${self:custom.apiVersion}/auction
