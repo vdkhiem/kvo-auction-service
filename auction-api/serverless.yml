@@ -15,7 +15,7 @@ provider:
 
 functions:
   healthcheck:
-    handler: src/utility/healthcheck.handler
+    handler: utility/healthcheck.handler
     events:
       - http:
           method: 'GET'
