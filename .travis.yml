@@ -48,3 +48,21 @@ jobs:
         - SERVICE_PATH="auction-api"
         - STAGE_NAME=prod
         - *PROD_ENV
+
+    # non-master branches deploys to stage named by the branch
+    - <<: *DEPLOY_SERVICE_JOB
+      name: "Deploy Auth API"
+      if: type = push AND NOT branch = master
+      env:
+        - SERVICE_PATH="auth-api"
+        - STAGE_NAME=sit
+        - *SIT_ENV
+
+    # master branch deploys to the 'prod' stage
+    - <<: *DEPLOY_SERVICE_JOB
+      name: "Deploy Auth API"
+      if: type = push AND branch = master
+      env:
+        - SERVICE_PATH="auth-api"
+        - STAGE_NAME=prod
+        - *PROD_ENV

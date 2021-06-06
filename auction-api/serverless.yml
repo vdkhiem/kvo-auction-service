@@ -48,7 +48,7 @@ functions:
           path: /${self:custom.apiVersion}/auction/{id}/bid
           authorizer: ${self:custom.authorizer}
   processAuctions:
-    handler: src/handlers/processAuctions.handler 
+    handler: auction/processAuctions.handler 
     # events:
     #   - schedule: rate(1 minute) # it similiars cron job
 custom:
