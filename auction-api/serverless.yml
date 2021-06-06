@@ -20,6 +20,12 @@ functions:
       - http:
           method: 'GET'
           path: /${self:custom.apiVersion}/healthcheck
+  createAuction:
+    handler: auction/createAuction.handler
+    event:
+      - http:
+          method: 'POST'
+          path: /${self:custom.apiVersion}/createAuction
 custom:
   bundle:
     linting: false
