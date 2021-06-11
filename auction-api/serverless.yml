@@ -20,33 +20,33 @@ functions:
       - http:
           method: 'GET'
           path: /${self:custom.apiVersion}/healthcheck
-  createAuction:
-    handler: auction/createAuction.handler
-    events:
-      - http:
-          method: 'POST'
-          path: /${self:custom.apiVersion}/auction
-  getAuctions:
-    handler: auction/getAuctions.handler 
-    events:
-      - http:
-          method: GET
-          path: /${self:custom.apiVersion}/auctions
-          authorizer: ${self:custom.authorizer}
-  getAuction:
-    handler: auction/getAuction.handler 
-    events:
-      - http:
-          method: GET
-          path: /${self:custom.apiVersion}/auction/{id}
-          authorizer: ${self:custom.authorizer}
-  placeBid:
-    handler: auction/placeBid.handler 
-    events:
-      - http:
-          method: PATCH # don't use POST because it uses for creation. Patch is update a property of a auction
-          path: /${self:custom.apiVersion}/auction/{id}/bid
-          authorizer: ${self:custom.authorizer}
+  # createAuction:
+  #   handler: auction/createAuction.handler
+  #   events:
+  #     - http:
+  #         method: 'POST'
+  #         path: /${self:custom.apiVersion}/auction
+  # getAuctions:
+  #   handler: auction/getAuctions.handler 
+  #   events:
+  #     - http:
+  #         method: GET
+  #         path: /${self:custom.apiVersion}/auctions
+  #         authorizer: ${self:custom.authorizer}
+  # getAuction:
+  #   handler: auction/getAuction.handler 
+  #   events:
+  #     - http:
+  #         method: GET
+  #         path: /${self:custom.apiVersion}/auction/{id}
+  #         authorizer: ${self:custom.authorizer}
+  # placeBid:
+  #   handler: auction/placeBid.handler 
+  #   events:
+  #     - http:
+  #         method: PATCH # don't use POST because it uses for creation. Patch is update a property of a auction
+  #         path: /${self:custom.apiVersion}/auction/{id}/bid
+  #         authorizer: ${self:custom.authorizer}
   processAuctions:
     handler: auction/processAuctions.handler 
     # events:
