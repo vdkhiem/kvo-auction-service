@@ -20,12 +20,12 @@ functions:
       - http:
           method: 'GET'
           path: /${self:custom.apiVersion}/healthcheck
-  # createAuction:
-  #   handler: auction/createAuction.handler
-  #   events:
-  #     - http:
-  #         method: 'POST'
-  #         path: /${self:custom.apiVersion}/auction
+  createAuction:
+    handler: auction/createAuction.handler
+    events:
+      - http:
+          method: 'POST'
+          path: /${self:custom.apiVersion}/auction
   # getAuctions:
   #   handler: auction/getAuctions.handler 
   #   events:
