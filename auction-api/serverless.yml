@@ -32,7 +32,7 @@ functions: # represent lambda fuction
     handler: auction/createAuction.handler
     events:
       - http:
-          method: 'POST'
+          method: 'POST' # create operation
           path: /${self:custom.apiVersion}/auction
   getAuctions:
     handler: auction/getAuctions.handler 
@@ -48,13 +48,13 @@ functions: # represent lambda fuction
           method: GET
           path: /${self:custom.apiVersion}/auction/{id}
           #authorizer: ${self:custom.authorizer}
-  # placeBid:
-  #   handler: auction/placeBid.handler 
-  #   events:
-  #     - http:
-  #         method: PATCH # don't use POST because it uses for creation. Patch is update a property of a auction
-  #         path: /${self:custom.apiVersion}/auction/{id}/bid
-  #         authorizer: ${self:custom.authorizer}
+  placeBid:
+    handler: auction/placeBid.handler 
+    events:
+      - http:
+          method: PATCH # don't use POST because it uses for creation. Patch is update a property of a auction
+          path: /${self:custom.apiVersion}/auction/{id}/bid
+          #authorizer: ${self:custom.authorizer}
   #processAuctions:
   #  handler: auction/processAuctions.handler 
     # events:

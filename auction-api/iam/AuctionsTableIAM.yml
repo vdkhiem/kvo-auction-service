@@ -5,6 +5,7 @@ AuctionsTableIAM:
     - dynamodb:Query
     - dynamodb:Scan
     - dynamodb:GetItem
+    - dynamodb:UpdateItem
   Resource:
     - ${self:custom.AuctionsTable.arn}
     #- arn:aws:dynamodb:#{AWS::Region}:#{AWS::AccountId}:table/AuctionsTable
