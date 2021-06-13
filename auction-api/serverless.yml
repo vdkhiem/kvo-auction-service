@@ -12,6 +12,8 @@ provider:
   lambdaHashingVersion: 20201221
   region: ap-southeast-2 # default region
   stage: ${opt:stage, 'sit'} # environment state
+  environment:
+    AUCTIONS_TABLE_NAME: ${self:custom.AuctionsTable.name}
   iamRoleStatements:
     - ${file(iam/AuctionsTableIAM.yml):AuctionsTableIAM}
 
@@ -61,7 +63,7 @@ functions: # represent lambda fuction
 custom: # define custom variable
   authorizer: arn:aws:lambda:#{AWS::Region}:#{AWS::AccountId}:function:auth-service-${self:provider.stage}-auth
   AuctionsTable:
-    name: !Ref AuctionsTable
+    name: !Ref AuctionsTable # AuctionsTable (logical name) is referenced AuctionsTable: ${file(resources/AuctionsTable.yml):AuctionsTable}
     arn: !GetAtt AuctionsTable.Arn
   bundle:
     linting: false # asking serverless-bundle do not perform linting check. E.g. missing comma, semi-colon
