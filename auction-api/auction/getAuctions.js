@@ -24,12 +24,12 @@ async function getAuctions(event, context) {
     };
 
     try {
-        // scan will query entire table
-        // const result = await dynamodb.scan({
-        //     TableName: process.env.AUCTIONS_TABLE_NAME,
-        // }).promise();
+        //scan will query entire table
+        const result = await dynamodb.scan({
+            TableName: process.env.AUCTIONS_TABLE_NAME,
+        }).promise();
 
-        const result = await dynamodb.query(params).promise();
+        //const result = await dynamodb.query(params).promise();
         auctions = result.Items;
     } catch (error) {
         console.error(error);
@@ -42,6 +42,6 @@ async function getAuctions(event, context) {
 }
 
 export const handler = commonMiddleware(getAuctions)
-    .use(validator({inputSchema: getAuctionsSchema, useDefaults: true}));
+    .use(validator({ inputSchema: getAuctionsSchema, useDefaults: true }));
 
 
