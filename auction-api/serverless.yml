@@ -41,13 +41,13 @@ functions: # represent lambda fuction
           method: GET
           path: /${self:custom.apiVersion}/auctions
           #authorizer: ${self:custom.authorizer}
-  # getAuction:
-  #   handler: auction/getAuction.handler 
-  #   events:
-  #     - http:
-  #         method: GET
-  #         path: /${self:custom.apiVersion}/auction/{id}
-  #         authorizer: ${self:custom.authorizer}
+  getAuction:
+    handler: auction/getAuction.handler 
+    events:
+      - http:
+          method: GET
+          path: /${self:custom.apiVersion}/auction/{id}
+          #authorizer: ${self:custom.authorizer}
   # placeBid:
   #   handler: auction/placeBid.handler 
   #   events:
