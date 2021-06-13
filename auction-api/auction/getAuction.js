@@ -2,7 +2,6 @@ import AWS from 'aws-sdk';
 import commonMiddleware from '../libs/commonMiddleware';
 import createError from 'http-errors'; // create error in a decorative way
 
-
 const dynamodb = new AWS.DynamoDB.DocumentClient
 
 export async function getAuctionById(id) {
