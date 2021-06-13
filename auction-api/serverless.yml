@@ -13,7 +13,21 @@ provider:
   region: ap-southeast-2 # default region
   stage: ${opt:stage, 'sit'} # environment state
 
-functions:
+resources: 
+  Resources: # Use cloudformation syntax start from here
+    AuctionsTable: # Logical ID for the resource
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: AuctionsTable
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions: 
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id # partition key
+            KeyType: HASH
+
+functions: # represent lambda fuction
   healthcheck:
     handler: auction/healthcheck.handler
     events:
@@ -47,15 +61,15 @@ functions:
   #         method: PATCH # don't use POST because it uses for creation. Patch is update a property of a auction
   #         path: /${self:custom.apiVersion}/auction/{id}/bid
   #         authorizer: ${self:custom.authorizer}
-  processAuctions:
-    handler: auction/processAuctions.handler 
+  #processAuctions:
+  #  handler: auction/processAuctions.handler 
     # events:
     #   - schedule: rate(1 minute) # it similiars cron job
-custom:
+custom: # define custom variable
   authorizer: arn:aws:lambda:#{AWS::Region}:#{AWS::AccountId}:function:auth-service-${self:provider.stage}-auth
   AuctionsTable:
     name: !Ref AuctionsTable
     arn: !GetAtt AuctionsTable.Arn
   bundle:
-    linting: false
+    linting: false # asking serverless-bundle do not perform linting check. E.g. missing comma, semi-colon
   apiVersion: v1
