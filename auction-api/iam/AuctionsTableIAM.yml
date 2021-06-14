@@ -9,6 +9,6 @@ AuctionsTableIAM:
   Resource:
     - ${self:custom.AuctionsTable.arn}
     #GlobalSecondaryIndex is virtual table therefore it has its own arn
-    - !Join ['/', '${self:custom.AuctionsTable.arn}', 'index', 'statusAndEndDate'] # get arn for GlobalSecondaryIndex
+    - !Join ['/', ['${self:custom.AuctionsTable.arn}', 'index', 'statusAndEndDate']] # get arn for GlobalSecondaryIndex
     #alternatively use ${self:custom.AuctionsTable.arn}/index/statusAndEndDate
     #- arn:aws:dynamodb:#{AWS::Region}:#{AWS::AccountId}:table/AuctionsTable 
