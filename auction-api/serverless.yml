@@ -48,7 +48,7 @@ functions: # represent lambda fuction
       - http:
           method: GET
           path: /${self:custom.apiVersion}/auction/{id}
-          #authorizer: ${self:custom.authorizer}
+          authorizer: ${self:custom.authorizer}
   placeBid:
     handler: auction/placeBid.handler 
     events:
@@ -62,7 +62,7 @@ functions: # represent lambda fuction
     #   - schedule: rate(1 minute) # it similiars cron job
 
 custom: # define custom variable
-  authorizer: arn:aws:lambda:#{AWS::Region}:#{AWS::AccountId}:function:auth-service-${self:provider.stage}-auth
+  authorizer: arn:aws:lambda:#{AWS::Region}:#{AWS::AccountId}:function:kvo-auth-service-${self:provider.stage}-auth #reference to auth lambda in kvo-auth-service
   AuctionsTable:
     name: !Ref AuctionsTable # AuctionsTable (logical name) is referenced AuctionsTable: ${file(resources/AuctionsTable.yml):AuctionsTable}
     arn: !GetAtt AuctionsTable.Arn
