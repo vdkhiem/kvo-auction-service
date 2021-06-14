@@ -3,9 +3,23 @@ AuctionsTable: # Logical ID for the resource
   Properties:
     TableName: AuctionsTable-${self:provider.stage}
     BillingMode: PAY_PER_REQUEST
-    AttributeDefinitions: 
+    AttributeDefinitions: # Each attribute defined here must had define either KeySchema or GlobalSecondaryIndexes
       - AttributeName: id
+        AttributeType: S
+      - AttributeName: status
+        AttributeType: S
+      - AttributeName: endingAt
         AttributeType: S
     KeySchema:
       - AttributeName: id # partition key
         KeyType: HASH
+    GlobalSecondaryIndexes: # GlobalSecondaryIndexes creates virtual copy of original table, it allows to query based on attribute specified below
+      - IndexName: statusAndEndDate
+        KeySchema:
+          - AttributeName: status
+            KeyType: HASH
+          - AttributeName: endingAt
+            KeyType: RANGE
+        Projection:
+          ProjectionType: ALL # ALL tells dynamodb which attributes (in this case is status and endingAt) need to keep in the virtual table
+            
