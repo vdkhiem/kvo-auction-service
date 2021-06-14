@@ -25,11 +25,11 @@ async function getAuctions(event, context) {
 
     try {
         //scan will query entire table
-        const result = await dynamodb.scan({
-            TableName: process.env.AUCTIONS_TABLE_NAME,
-        }).promise();
+        // const result = await dynamodb.scan({
+        //     TableName: process.env.AUCTIONS_TABLE_NAME,
+        // }).promise();
 
-        //const result = await dynamodb.query(params).promise();
+        const result = await dynamodb.query(params).promise();
         auctions = result.Items;
     } catch (error) {
         console.error(error);

@@ -5,8 +5,8 @@ import { closeAuction } from '../libs/closeAuction';
 async function processAuctions(event, context) {
     try {
         const auctionsToClose = await getEndedAuctions();
-        const closePromises = auctionsToClose.map(auction => closeAuction(auction));
-        await Promise.all(closePromises);
+        const closePromises = auctionsToClose.map(auction => closeAuction(auction)); // returns all the promises
+        await Promise.all(closePromises); // await until all the promises are resolved.
         console.log('List of auctions are going to close');
         console.log(auctionsToClose);
         return {
