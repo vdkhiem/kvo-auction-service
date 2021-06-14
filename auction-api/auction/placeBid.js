@@ -29,7 +29,7 @@ async function placeBid(event, context) {
 
     // Auction status validation
     if (auction.status !== "OPEN") {
-        throw new createError.Forbidden(`You cannot bit on close auction!`)
+        throw new createError.Forbidden(`You cannot bit on a close auction!`)
     }
 
     // Auction bid amount validation
