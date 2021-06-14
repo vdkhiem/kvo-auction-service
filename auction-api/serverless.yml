@@ -56,9 +56,9 @@ functions: # represent lambda fuction
           method: PATCH # don't use POST because it uses for creation. Patch is update a property of a auction
           path: /${self:custom.apiVersion}/auction/{id}/bid
           #authorizer: ${self:custom.authorizer}
-  #processAuctions:
-  #  handler: auction/processAuctions.handler 
-    # events:
+  processAuctions:
+    handler: auction/processAuctions.handler 
+    # events: # commented so it will not trigger every minute. Use command line to trigger manually. sls invoke -f processAuctions -l
     #   - schedule: rate(1 minute) # it similiars cron job
 
 custom: # define custom variable
