@@ -35,6 +35,7 @@ functions: # represent lambda fuction
       - http:
           method: 'POST' # create operation
           path: /${self:custom.apiVersion}/auction
+          authorizer: ${self:custom.authorizer}
   getAuctions:
     handler: auction/getAuctions.handler 
     events:
@@ -55,7 +56,7 @@ functions: # represent lambda fuction
       - http:
           method: PATCH # don't use POST because it uses for creation. Patch is update a property of a auction
           path: /${self:custom.apiVersion}/auction/{id}/bid
-          #authorizer: ${self:custom.authorizer}
+          authorizer: ${self:custom.authorizer}
   processAuctions:
     handler: auction/processAuctions.handler 
     # events: # commented so it will not trigger every minute. Use command line to trigger manually. sls invoke -f processAuctions -l

@@ -11,21 +11,21 @@ const dynamodb = new AWS.DynamoDB.DocumentClient
 async function placeBid(event, context) {
     const { id } = event.pathParameters;
     const { amount } = event.body;
-    //const { email } = event.requestContext.authorizer;
+    const { email } = event.requestContext.authorizer;
 
     const auction = await getAuctionById(id);
 
     console.log('placeBid', auction);
 
     // Auction not allow bid owner place bid
-    // if (email === auction.seller) {
-    //     throw new createError.Forbidden(`You cannot bid your own auction`);
-    // }
+    if (email === auction.seller) {
+        throw new createError.Forbidden(`You cannot bid your own auction`);
+    }
 
     // Auction not allow highest bid to bid again
-    // if (email === auction.highestBid.bidder) {
-    //     throw new createError.Forbidden(`You are already highest bidder`);
-    // }
+    if (email === auction.highestBid.bidder) {
+        throw new createError.Forbidden(`You are already highest bidder`);
+    }
 
     // Auction status validation
     if (auction.status !== "OPEN") {
