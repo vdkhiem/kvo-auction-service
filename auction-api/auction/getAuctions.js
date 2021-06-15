@@ -24,7 +24,7 @@ async function getAuctions(event, context) {
     };
 
     try {
-        //scan will query entire table
+        // //scan will query entire table
         // const result = await dynamodb.scan({
         //     TableName: process.env.AUCTIONS_TABLE_NAME,
         // }).promise();
