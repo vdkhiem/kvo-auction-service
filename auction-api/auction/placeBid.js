@@ -19,7 +19,7 @@ async function placeBid(event, context) {
 
     // Auction not allow bid owner place bid
     if (email === auction.seller) {
-        throw new createError.Forbidden(`You cannot bid your own auction`);
+        throw new createError.Forbidden(`You cannot bid your own auction abc`);
     }
 
     // Auction not allow highest bid to bid again
